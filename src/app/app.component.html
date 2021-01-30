@@ -1,0 +1,42 @@
+<div>search Patient by name</div>
+<div [formGroup] ="patientForm">
+    <input type="text" formControlName="name"  >
+    <input type="date" formControlName="dob" placeholder="YYYY/MM/DD"  >
+    <div>
+        <input type="button" [disabled]="retrivingData" value="Search" (click)="formSubmitted()">
+        <input type="button" value="reset" (click)="reset()" >
+    </div>
+</div>
+
+<table>
+    <tr>
+        <td *ngFor="let user of headers; index as i;">
+             {{user}} 
+        </td>
+    </tr>
+    <tr *ngFor="let user of resultData; index as i;orderBy:['birthDate']">
+            <td>
+                 {{user.name}} 
+            </td>
+            <td>
+                {{user.gender}} 
+            </td>
+            <td>
+                {{user.birthDate}} 
+            </td>
+            <td>
+                {{user.id}} 
+            </td>
+            <td>
+                {{user.city}} 
+            </td>
+            <td>
+                {{user.country}} 
+            </td>
+        </tr>
+        <tfoot>
+                <tr>
+                  <td>{{lastRequestTime | date:'medium'}}</td>
+                </tr>
+              </tfoot>
+</table>
