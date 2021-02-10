@@ -1,0 +1,21 @@
+<div *ngIf="formattedJson.length>0">
+<form [formGroup]="QuestionaireForm" >
+    <div  *ngFor="let row of formattedJson; let i = index;">
+    <div *ngIf="row.type === 'string'" class="form-group">
+            <label for="{{row.linkId}}">{{row.text}}</label>
+            <input type="text"  class="form-control" id="{{row.linkId}}">
+          </div>
+  <div *ngIf="row.type === 'boolean'" class="form-group">
+    <label class="form-control">{{row.text}}
+        <div class="radio">
+            <label><input type="radio" name="{{row.linkId}}" >Yes</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="{{row.linkId}}">No</label>
+          </div>
+  </label>
+</div>
+  </div>
+  <button class="btn btn-primary">Submit</button>
+</form>
+</div>
